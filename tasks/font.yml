@@ -1,0 +1,23 @@
+- name: Download SauceCodePro
+  shell: "mkdir -p ~/font/ && rm -rf ~/font/* && wget -P ~/font/ https://github.com/ryanoasis/nerd-fonts/releases/latest/download/SourceCodePro.tar.xz"
+  become_user: newt
+  tags:
+    - font
+    - core
+- name: Unpackage
+  shell: "tar -xf ~/font/SourceCodePro.tar.xz -C ~/font/"
+  become_user: newt
+  tags:
+    - font
+    - core
+- name: Install fonts
+  shell: "mkdir -p /usr/share/fonts/truetype/saucecodepro/ && find /home/newt/font/* -name '*.ttf' -exec cp {} /usr/share/fonts/truetype/saucecodepro/ \\;"
+  become: true
+  tags: 
+    - font
+    - core
+- name: Font cache
+  shell: fc-cache
+  tags:
+    - font
+    - core

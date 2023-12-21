@@ -1,0 +1,16 @@
+- name: Install tmux
+  apt: name=tmux
+  tags:
+    - tmux
+- name: Clone tpm
+  become_user: newt
+  ansible.builtin.git:
+    repo: 'https://github.com/tmux-plugins/tpm'
+    dest: "~/.tmux/plugins/tpm"
+  tags:
+    - tmux
+- name: Install tmux plugins
+  become_user: newt
+  shell: cd ~ && ./.tmux/plugins/tpm/bin/install_plugins
+  tags:
+    - tmux

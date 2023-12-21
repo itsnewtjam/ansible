@@ -1,0 +1,30 @@
+- name: Download Firefox
+  become: true
+  shell: wget -O firefox.tar.bz2 "https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US"
+  tags:
+    - firefox
+- name: Unpack and Install
+  become: true
+  shell: tar -xf firefox.tar.bz2 && mv firefox /opt/
+  tags:
+    - firefox
+- name: Create symlink
+  become: true
+  shell: ln -s /opt/firefox/firefox /usr/bin/firefox
+  tags:
+    - firefox
+- name: Desktop entry
+  become: true
+  shell: cp firefox.desktop /usr/share/applications/
+  tags:
+    - firefox
+- name: Mozilla Policy Template
+  become: true
+  shell: mkdir -p /etc/firefox/policies/ && cp firefox.json /etc/firefox/policies/policies.json
+  tags:
+    - firefox
+- name: Cleanup
+  become: true
+  shell: rm firefox.tar.bz2 && rm wget-log
+  tags:
+    - firefox

@@ -1,0 +1,31 @@
+- hosts: localhost
+  become: true
+  tasks:
+    - include_tasks: tasks/core.yml
+      tags:
+        - core
+        - zsh
+        - neovim
+    - include_tasks: tasks/dotfiles.yml
+      tags:
+        - dotfiles
+    - include_tasks: tasks/font.yml
+      tags:
+        - core
+        - font
+    - include_tasks: tasks/node.yml
+      tags:
+        - core
+        - node
+    - include_tasks: tasks/zsh.yml
+      tags:
+        - zsh
+    - include_tasks: tasks/tmux.yml
+      tags:
+        - tmux
+    - include_tasks: tasks/nvim.yml
+      tags:
+        - neovim
+    - include_tasks: tasks/firefox.yml
+      tags:
+        - firefox
