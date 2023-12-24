@@ -4,7 +4,7 @@
     - zsh
 - name: Change shell to zsh
   become_user: newt
-  shell: chsh -s `which zsh` $USER
+  shell: usermod --shell `which zsh` newt
   tags:
     - zsh
 - name: Check if conf exists

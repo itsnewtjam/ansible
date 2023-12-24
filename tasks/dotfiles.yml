@@ -5,7 +5,7 @@
 - name: Cloning .dotfiles
   become_user: newt
   ansible.builtin.git:
-    repo: 'git@github.com:itsnewtjam/.dotfiles.git'
+    repo: 'https://github.com/itsnewtjam/.dotfiles'
     dest: "~/.dotfiles"
     recursive: yes
     update: yes
@@ -13,6 +13,16 @@
     version: master
   tags:
     - dotfiles
+- name: Check if .zshrc exists
+  stat:
+    path: /home/newt/.zshrc
+  register: zshrcstats
+  tags:
+    - zsh
+- name: Remove default .zshrc
+  become_user: newt
+  shell: rm ~/.zshrc
+  when: zshrcstats.stat.exists == True
 - name: Stow dotfiles
   become_user: newt
   shell: cd ~/.dotfiles && ./debian

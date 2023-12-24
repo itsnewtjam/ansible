@@ -6,6 +6,9 @@
         - core
         - zsh
         - neovim
+    - include_tasks: tasks/zsh.yml
+      tags:
+        - zsh
     - include_tasks: tasks/dotfiles.yml
       tags:
         - dotfiles
@@ -17,9 +20,6 @@
       tags:
         - core
         - node
-    - include_tasks: tasks/zsh.yml
-      tags:
-        - zsh
     - include_tasks: tasks/tmux.yml
       tags:
         - tmux
