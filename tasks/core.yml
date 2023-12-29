@@ -1,7 +1,7 @@
 - name: Install System Packages 1
   become: true
   apt:
-    name: ["build-essential", "sway", "xwayland", "wl-clipboard", "dmenu", "unzip", "curl", "fzf", "ripgrep", "udisks2"]
+    name: ["build-essential", "sway", "xwayland", "mako-notifier", "wl-clipboard", "dmenu", "unzip", "curl", "fzf", "ripgrep", "udisks2"]
   tags:
     - core
 
