@@ -16,6 +16,10 @@
       tags:
         - core
         - font
+    - include_tasks: tasks/php.yml
+      tags:
+        - core
+        - php
     - include_tasks: tasks/node.yml
       tags:
         - core

@@ -1,0 +1,6 @@
+- name: Install Composer
+  become: true
+  apt: name=composer
+  tags:
+    - core
+    - php

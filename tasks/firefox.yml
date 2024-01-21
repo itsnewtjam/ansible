@@ -18,6 +18,13 @@
   shell: cp firefox.desktop /usr/share/applications/
   tags:
     - firefox
+- name: Chown so Firefox can update
+  become: true
+  file:
+    path: /opt/firefox/
+    owner: newt
+    group: newt
+    recursive: true
 - name: Mozilla Policy Template
   become: true
   shell: mkdir -p /etc/firefox/policies/ && cp firefox.json /etc/firefox/policies/policies.json
